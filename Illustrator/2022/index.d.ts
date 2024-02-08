@@ -652,6 +652,76 @@ declare enum DocumentType {
 }
 
 /**
+ * Export for screens scale type.
+ */
+declare enum ExportForScreensScaleType {
+  /**
+   * Scale artwork by factors like 1x, 2x, 3x and so on, where 1x means 72 ppi.
+   */
+  SCALEBYFACTOR = 0,
+
+  /**
+   * Scale artwork by specifying artwork height in pixels like 100px, 124px etc. Width of the artwork is adjusted automatically to maintain the aspect ratio.
+   */
+  SCALEBYHEIGHT = 2,
+
+  /**
+   * Scale artwork by specifying resolution in ppi like 72 ppi, 100 ppi, 144 ppi etc.
+   */
+  SCALEBYRESOLUTION = 3,
+
+  /**
+   * Scale artwork by specifying artwork width in pixels like 100px, 124px etc. Height of the artwork is adjusted automatically to maintain the aspect ratio.
+   */
+  SCALEBYWIDTH = 1,
+}
+
+/**
+ * Export for screens type.
+ */
+declare enum ExportForScreensType {
+  /**
+   * Export file in JPEG (100% quality) format.
+   */
+  SE_JPEG100 = 1,
+
+  /**
+   * Export file in JPEG (20% quality) format.
+   */
+  SE_JPEG20 = 4,
+
+  /**
+   * Export file in JPEG (50% quality) format.
+   */
+  SE_JPEG50 = 3,
+
+  /**
+   * Export file in JPEG (80% quality) format.
+   */
+  SE_JPEG80 = 2,
+
+  /**
+   * Export file in Acrobat PDF format.
+   */
+  SE_PDF = 8,
+
+  /**
+   * Export file in PNG 24-bit format.
+   */
+  SE_PNG24 = 7,
+
+  /**
+   * Export file in PNG 8-bit format.
+   */
+  SE_PNG8 = 6,
+
+  /**
+   * Export file in SVG format.
+   */
+  SE_SVG = 5,
+}
+
+/**
  * Export file types.
  */
 declare enum ExportType {
@@ -3197,6 +3267,166 @@ declare enum WariChuJustificationType {
 }
 
 /**
+ * The kashida type constants.
+ */
+declare enum KashidasType {
+  /**
+   *
+   */
+  DEFAULT_KASHIDAS = 0,
+
+  /**
+   *
+   */
+  KASHIDAS_OFF = 1,
+
+  /**
+   *
+   */
+  KASHIDAS_ON = 0,
+}
+
+/**
+ * Direction override type constants.
+ */
+declare enum DirOverrideType {
+  /**
+   *
+   */
+  DEFAULT_DIRECTION = 0,
+
+  /**
+   *
+   */
+  LEFT_TO_RIGHT_DIRECTION = 1,
+
+  /**
+   *
+   */
+  RIGHT_TO_LEFT_DIRECTION = 2,
+}
+
+/**
+ * Digit set type constants.
+ */
+declare enum DigitSetType {
+  /**
+   *
+   */
+  ARABIC_DIGITS = 1,
+
+  /**
+   *
+   */
+  DEFAULT_DIGITS = 0,
+
+  /**
+   *
+   */
+  FARSI_DIGITS = 3,
+
+  /**
+   *
+   */
+  HINDI_DIGITS = 2,
+}
+
+/**
+ * Diacritic vertical position type constants.
+ */
+declare enum DiacVPosType {
+  /**
+   *
+   */
+  DEFAULT_POSITION = 0,
+
+  /**
+   *
+   */
+  LOOSE_POSITION = 1,
+
+  /**
+   *
+   */
+  MEDIUM_POSITION = 2,
+
+  /**
+   *
+   */
+  OPENTYPE_POSITION = 4,
+
+  /**
+   *
+   */
+  TIGHT_POSITION = 3,
+}
+
+/**
+ * The kashida width type constants.
+ */
+declare enum KashidaWidthType {
+  /**
+   *
+   */
+  kashidaLong = 3,
+
+  /**
+   *
+   */
+  kashidaMedium = 2,
+
+  /**
+   *
+   */
+  kashidaNone = 0,
+
+  /**
+   *
+   */
+  kashidaSmall = 1,
+
+  /**
+   *
+   */
+  kashidaStylistic = 4,
+}
+
+/**
+ * The composer type constants.
+ */
+declare enum ComposerEngineType {
+  /**
+   *
+   */
+  adornment = 2,
+
+  /**
+   *
+   */
+  latinCJKComposer = 0,
+
+  /**
+   *
+   */
+  optycaComposer = 1,
+}
+
+/**
+ * The composer type constants.
+ */
+declare enum ParagraphDirectionType {
+  /**
+   *
+   */
+  LEFT_TO_RIGHT_DIRECTION = 0,
+
+  /**
+   *
+   */
+  RIGHT_TO_LEFT_DIRECTION = 1,
+}
+
+/**
  * The Burasagari type.
  */
 declare enum BurasagariTypeEnum {
@@ -3664,6 +3894,85 @@ declare enum DocumentLayoutStyle {
    * Arranges documents as vertical tiles.
    */
   VERTICALTILE = 2,
+}
+
+/**
+ * JPEG Compression Method type.
+ */
+declare enum JPEGCompressionMethodType {
+  /**
+   * Select Baseline Optimized for optimized color and a slightly smaller file size. Not supported by all web browsers.
+   */
+  BASELINEOPTIMIZED = 1,
+
+  /**
+   * Select Baseline (Standard) to use a format recognized by most web browsers.
+   */
+  BASELINESTANDARD = 0,
+
+  /**
+   * Select Progressive to display a series of increasingly detailed scans (you specify how many in ProgressiveScan) as the image downloads. Not supported by all web browsers.
+   */
+  PROGRESSIVE = 2,
+}
+
+/**
+ * A collection of assets.
+ */
+declare class Assets {
+  /**
+   * Number of elements in the collection.
+   */
+  length: number
+
+  /**
+   * The object's container.
+   */
+  parent: object
+
+  /**
+   * The class name of the object.
+   */
+  typename: string
+
+  /**
+   * Creates an asset from the given art(s)
+   * @param sourceArt The page item(s) to apply to.
+   */
+  add(sourceArt: any): Asset
+
+  /**
+   * Creates an asset from the selected arts.
+   */
+  addFromSelection(): Asset
+
+  /**
+   * Gets the asset with the specified AssetID.
+   * @param assetID The UID of the asset.
+   */
+  getByID(assetID: number): Asset
+
+  /**
+   * Get the first element in the collection with the provided name.
+   */
+  getByName(name: string): Asset
+
+  /**
+   * Gets the first asset with specified name.
+   * @param assetName Name of the asset.
+   */
+  getByName(assetName: string): Asset
+
+  /**
+   * Deletes the asset with specified id.
+   * @param assetID UID of the asset to be deleted.
+   */
+  remove(assetID: number): void
+
+  /**
+   * Deletes all elements.
+   */
+  removeAll(): void
 }
 
 /**
@@ -5820,6 +6129,191 @@ declare class Matrix {
    *
    */
   static mValueTY: number
+}
+
+/**
+ * An item that needs to be exported; for example, a document, artboard, or asset.
+ */
+declare class ExportForScreensItemToExport {
+  /**
+   * Range of artboards to export [possible values: '', 'all'(default), range]
+   */
+  artboards: string
+
+  /**
+   * Array of asset id to export (default:empty)
+   */
+  assets: number[]
+
+  /**
+   * Whether to export the document or not.
+   */
+  document: boolean
+}
+
+/**
+ * Options which may be provided when exporting a document as a JPEG100 file.
+ */
+declare class ExportForScreensOptionsJPEG {
+  /**
+   * Should the resulting image be antialiased.
+   */
+  antiAliasing: AntiAliasingMethod
+
+  /**
+   * Should the image be compressed.
+   */
+  compressionMethod: JPEGCompressionMethodType
+
+  /**
+   * Embed an ICC profile when exporting.
+   */
+  embedICCProfile: boolean
+
+  /**
+   * Specify the number of detailed scans when downloading a JPEG file using the Progressive option as the CompressionMethod.
+   */
+  progressiveScan: number
+
+  /**
+   * How should the resulting image be scaled.
+   */
+  scaleType: ExportForScreensScaleType
+
+  /**
+   * The value by which the resulting image should be scaled.
+   */
+  scaleTypeValue: number
+}
+
+/**
+ * Options which may be provided when exporting a document as an 8 bit PNG file.
+ */
+declare class ExportForScreensOptionsPNG8 {
+  /**
+   * Should the resulting image be antialiased.
+   */
+  antiAliasing: AntiAliasingMethod
+
+  /**
+   * Number of colors in exported color table.
+   */
+  colorCount: number
+
+  /**
+   * Should the resulting image be interlaced.
+   */
+  interlaced: boolean
+
+  /**
+   * Should the artboard be matted with a color.
+   */
+  matte: boolean
+
+  /**
+   * The color to use when matting the artboard (default: white)
+   */
+  matteColor: RGBColor
+
+  /**
+   * How should the resulting image be scaled.
+   */
+  scaleType: ExportForScreensScaleType
+
+  /**
+   * The value by which the resulting image should be scaled.
+   */
+  scaleTypeValue: number
+
+  /**
+   * Should the resulting image use transparency.
+   */
+  transparency: boolean
+}
+
+/**
+ * Options which may be provided when exporting a document as an 24 bit PNG file.
+ */
+declare class ExportForScreensOptionsPNG24 {
+  /**
+   * Should the resulting image be antialiased.
+   */
+  antiAliasing: AntiAliasingMethod
+
+  /**
+   * Should the resulting image rasterize against a black background (with value true) or white background(with value false) if it doesn't use transparency.
+   */
+  backgroundBlack: boolean
+
+  /**
+   * Should the resulting image be interlaced.
+   */
+  interlaced: boolean
+
+  /**
+   * How should the resulting image be scaled.
+   */
+  scaleType: ExportForScreensScaleType
+
+  /**
+   * The value by which the resulting image should be scaled.
+   */
+  scaleTypeValue: number
+
+  /**
+   * Should the resulting image use transparency.
+   */
+  transparency: boolean
+}
+
+/**
+ * Options which may be provided when exporting a document as a web optimized SVG file.
+ */
+declare class ExportForScreensOptionsWebOptimizedSVG {
+  /**
+   * Decimal precision for element coordinate values.
+   */
+  coordinatePrecision: number
+
+  /**
+   * How should the CSS properties of the document be included in the document.
+   */
+  cssProperties: SVGCSSPropertyLocation
+
+  /**
+   * The type of font that should be included in the exported file.
+   */
+  fontType: SVGFontType
+
+  /**
+   * Should the raster images in the exported file be included.
+   */
+  rasterImageLocation: RasterImageLocation
+
+  /**
+   * How object names (IDs) are generated in exported SVG.
+   */
+  svgId: SVGIdType
+
+  /**
+   * Reduces the size of the svg.
+   */
+  svgMinify: boolean
+
+  /**
+   * Makes the SVG Responsive.
+   */
+  svgResponsive: boolean
+}
+
+/**
+ * Options which may be provided when exporting a document as a PDF file.
+ */
+declare class ExportForScreensPDFOptions {
+  /**
+   * The max string length is 255 bytes. Name of PDF preset to use.
+   */
+  pdfPreset: string
 }
 
 /**
@@ -8727,6 +9221,22 @@ declare class Document {
   exportFile(exportFile: File, exportFormat: ExportType, options?: any): void
 
   /**
+   * Export the specified document/asset(s)/artboard(s)
+   * @param exportFolder The folder where the exported documents/assets/artboards are saved.
+   * @param exportFormat The file type in which the document is exported.
+   * @param options Options for the file type specified.
+   * @param itemToExport What to export.
+   * @param fileNamePrefix String prepended to each file name.
+   */
+  exportForScreens(
+    exportFolder: File,
+    exportFormat: ExportForScreensType,
+    options?: any,
+    itemToExport?: ExportForScreensItemToExport,
+    fileNamePrefix?: string,
+  ): void
+
+  /**
    * Save all PDF presets to a file.
    * @param file File to export to.
    */
@@ -10371,12 +10881,12 @@ declare class GraphItem extends PageItem {
 /**
  * Non-native artwork item.
  */
-declare class NonNativeItem extends PageItem {}
+declare class NonNativeItem extends PageItem { }
 
 /**
  * Mesh artwork item.
  */
-declare class MeshItem extends PageItem {}
+declare class MeshItem extends PageItem { }
 
 /**
  * Plugin artwork item.
@@ -11957,6 +12467,46 @@ declare class TracingObject {
 }
 
 /**
+ * An (exportable) asset.
+ */
+declare class Asset {
+  /**
+   * The UID for the asset which is unique within a document.
+   */
+  assetID: number
+
+  /**
+   * Name of the asset.
+   */
+  assetName: string
+
+  /**
+   * The object's container.
+   */
+  parent: object
+
+  /**
+   * The class name of the object.
+   */
+  typename: string
+
+  /**
+   * Gets the normalized name without special characters, such that it can be used as a file name.
+   */
+  getNormalizedName(): string
+
+  /**
+   * Deletes this object.
+   */
+  remove(): void
+
+  /**
+   * Deletes all elements.
+   */
+  removeAll(): void
+}
+
+/**
  * An artboard object.
  */
 declare class Artboard {
@@ -12026,3 +12576,614 @@ declare class Artboard {
  *
  */
 type Rect = [number, number, number, number]
+
+declare enum ElementPlacement {
+  INSIDE = 0,
+  PLACEATBEGINNING = 1,
+  PLACEATEND = 2,
+  PLACEBEFORE = 3,
+  PLACEAFTER = 4,
+}
+
+declare enum PerspectiveGridType {
+  OnePointPerspectiveGridType = 0,
+  TwoPointPerspectiveGridType = 1,
+  ThreePointPerspectiveGridType = 2,
+  InvalidPerspectiveGridType = 3,
+}
+
+declare enum ViewRasterType {
+  TRACINGVIEWRASTERADJUSTEDIMAGE = 0,
+  TRACINGVIEWRASTERNOIMAGE = 1,
+  TRACINGVIEWRASTERORIGINALIMAGE = 2,
+  TRACINGVIEWRASTERTRANSPARENTIMAGE = 3,
+}
+
+declare enum ViewVectorType {
+  TRACINGVIEWVECTORNOTRACINGRESULT = 0,
+  TRACINGVIEWVECTOROUTLINES = 1,
+  TRACINGVIEWVECTOROUTLINESWITHTRACING = 2,
+  TRACINGVIEWVECTORTRACINGRESULT = 3,
+}
+
+declare module aiMenu {
+  let file: {
+    new: "New"
+    newFromTemplate: "newFromTemplate"
+    open: "open"
+    browseInBridge: "Adobe Bridge Browse"
+    close: "close"
+    save: "save"
+    saveAs: "saveas"
+    saveACopy: "saveacopy"
+    saveAsTemplate: "saveastemplate"
+    saveSelectedSlices: "Adobe AI Save Selected Slices"
+    revert: "revert"
+    searchAdobeStock: "Search Adobe Stock"
+    place: "AI Place"
+    export: {
+      export: "export"
+      exportForScreens: "exportForScreens"
+      saveForWebAndDevices: "Adobe AI Save For Web"
+    }
+    exportSelection: "exportSelection"
+    packageMenuItem: "Package Menu Item"
+    scripts: {
+      otherScript: "ai_browse_for_script"
+    }
+    documentSetup: "document"
+    documentColorMode: {
+      cmykColor: "doc-color-cmyk"
+      rgbColor: "doc-color-rgb"
+    }
+    fileInfo: "File Info"
+    print: "Print"
+    exit: "quit"
+  }
+  let edit: {
+    undo: "undo"
+    redo: "redo"
+    cut: "cut"
+    copy: "copy"
+    paste: "paste"
+    pasteInFront: "pasteFront"
+    pasteInBack: "pasteBack"
+    pasteInPlace: "pasteInPlace"
+    pasteOnAllArtboards: "pasteInAllArtboard"
+    clear: "clear"
+    findAndReplace: "Find and Replace"
+    findNext: "Find Next"
+    checkSpelling: "Check Spelling"
+    definePattern: "Define Pattern Menu Item"
+    editColors: {
+      recolorArtwork: "Recolor Art Dialog"
+      adjustColorBalance: "Adjust3"
+      blendFrontToBack: "Colors3"
+      blendHorizontally: "Colors4"
+      blendVertically: "Colors5"
+      convertToCMYK: "Colors8"
+      convertToGrayscale: "Colors7"
+      convertToRGB: "Colors9"
+      invertColors: "Colors6"
+      overprintBlack: "Overprint2"
+      saturate: "Saturate3"
+    }
+    editOriginal: "EditOriginal Menu Item"
+    transparencyFlattenerPresets: "Transparency Presets"
+    tracingPresets: "TracingPresets"
+    printPresets: "Print Presets"
+    adobePDFPresets: "PDF Presets"
+    sWFPresets: "SWFPresets"
+    perspectiveGridPresets: "PerspectiveGridPresets"
+    colorSettings: "color"
+    assignProfile: "assignprofile"
+    keyboardShortcuts: "KBSC Menu Item"
+    preferences: {
+      general: "preference"
+      selectionAndAnchorDisplay: "selectPref"
+      type: "keyboardPref"
+      units: "unitundoPref"
+      guidesAndGrid: "guidegridPref"
+      smartGuides: "snapPref"
+      slices: "slicePref"
+      hyphenation: "hyphenPref"
+      pluginsAndScratchDisks: "pluginPref"
+      userInterface: "UIPref"
+      fileHandlingAndClipboard: "FileClipboardPref"
+      appearanceOfBlack: "BlackPref"
+    }
+  }
+  let preferences: {
+    general: "preference"
+    selectionAndAnchorDisplay: "selectPref"
+    type: "keyboardPref"
+    units: "unitundoPref"
+    guidesAndGrid: "guidegridPref"
+    smartGuides: "snapPref"
+    slices: "slicePref"
+    hyphenation: "hyphenPref"
+    pluginsAndScratchDisks: "pluginPref"
+    userInterface: "UIPref"
+    fileHandlingAndClipboard: "FileClipboardPref"
+    appearanceOfBlack: "BlackPref"
+  }
+  let object: {
+    transform: {
+      transformAgain: "transformagain"
+      move: "transformmove"
+      rotate: "transformrotate"
+      reflect: "transformreflect"
+      scale: "transformscale"
+      shear: "transformshear"
+      transformEach: "Transform v23"
+      resetBoundingBox: "AI Reset Bounding Box"
+    }
+    arrange: {
+      bringToFront: "sendToFront"
+      bringForward: "sendForward"
+      sendBackward: "sendBackward"
+      sendToBack: "sendToBack"
+      sendToCurrentLayer: "Selection Hat 2"
+    }
+    group: "group"
+    ungroup: "ungroup"
+    lock: {
+      selection: "lock"
+      allArtworkAbove: "Selection Hat 5"
+      otherLayers: "Selection Hat 7"
+    }
+    unlockAll: "unlockAll"
+    hide: {
+      selection: "hide"
+      allArtworkAbove: "Selection Hat 4"
+      otherLayers: "Selection Hat 6"
+    }
+    showAll: "showAll"
+    expand: "Expand3"
+    expandAppearance: "expandStyle"
+    flattenTransparency: "FlattenTransparency1"
+    rasterize: "Rasterize 8 menu item"
+    createGradientMesh: "make mesh"
+    createObjectMosaic: "AI Object Mosaic Plug-in4"
+    createTrimMarks: "TrimMark v25"
+    slice: {
+      make: "AISlice Make Slice"
+      release: "AISlice Release Slice"
+      createFromGuides: "AISlice Create from Guides"
+      createFromSelection: "AISlice Create from Selection"
+      duplicateSlice: "AISlice Duplicate"
+      combineSlices: "AISlice Combine"
+      divideSlices: "AISlice Divide"
+      deleteAll: "AISlice Delete All Slices"
+      sliceOptions: "AISlice Slice Options"
+      clipToArtboard: "AISlice Clip to Artboard"
+    }
+    path: {
+      join: "join"
+      average: "average"
+      outlineStroke: "OffsetPath v22"
+      offsetPath: "OffsetPath v23"
+      simplify: "simplify menu item"
+      addAnchorPoints: "Add Anchor Points2"
+      removeAnchorPoints: "Remove Anchor Points menu"
+      divideObjectsBelow: "Knife Tool2"
+      splitIntoGrid: "Rows and Columns…."
+      cleanUp: "cleanup menu item"
+    }
+    blend: {
+      make: "Path Blend Make"
+      release: "Path Blend Release"
+      expand: "Path Blend Expand"
+      blendOptions: "Path Blend Options"
+      replaceSpine: "Path Blend Replace Spine"
+      reverseSpine: "Path Blend Reverse Spine"
+      reverseFrontToBack: "Path Blend Reverse Stack"
+    }
+    envelopeDistort: {
+      makeWithWarp: "Make Warp"
+      makeWithMesh: "Create Envelope Grid"
+      makeWithTopObject: "Make Envelope"
+      release: "Release Envelope"
+      envelopeOptions: "Envelope Options"
+      expand: "Expand Envelope"
+      editContents: "Edit Envelope Contents"
+    }
+    perspective: {
+      attachToActivePlane: "Attach to Active Plane"
+      releaseWithPerspective: "Release with Perspective"
+      movePlaneToMatchObject: "Show Object Grid Plane"
+      editText: "Edit Original Object"
+    }
+    livePaint: {
+      make: "Make Planet X"
+      merge: "Marge Planet X"
+      release: "Release Planet X"
+      gapOptions: "Planet X Options"
+      expand: "Expand Planet X"
+    }
+    textWrap: {
+      make: "Make Text Wrap"
+      release: "Release Text Wrap"
+      textWrapOptions: "Text Wrap Options…"
+    }
+    clippingMask: {
+      make: "makeMask"
+      release: "releaseMask"
+      editContents: "editMask"
+    }
+    compoundPath: {
+      make: "compoundPath"
+      release: "noCompoundPath"
+    }
+    artboards: {
+      convertToArtboards: "setCropMarks"
+      rearrange: "ReArrange Artboards"
+      fitToArtworkBounds: "Fit Artboard to artwork bounds"
+      fitToSelectedArt: "Fit Artboard to selected Art"
+    }
+    graph: {
+      type: "setGraphStyle"
+      data: "editGraphData"
+      design: "graphDesigns"
+      column: "setBarDesign"
+      marker: "setIconDesign"
+    }
+    cropImage: "Crop Image"
+    makeMesh: "make mesh"
+  }
+  let type: {
+    glyphs: "alternate glyph palette plugin"
+    areaTypeOptions: "area-type-options"
+    typeOnAPath: {
+      rainbow: "Rainbow"
+      threeDRibbon: "3D ribbon"
+      skew: "Skew"
+      stairStep: "Stair Step"
+      gravity: "Gravity"
+      typeOnAPathOptions: "typeOnPathOptions"
+      updateLegacyTypeOnAPath: "updateLegacyTOP"
+    }
+    threadedText: {
+      create: "threadTextCreate"
+      releaseSelection: "releaseThreadedTextSelection"
+      removeThreading: "removeThreading"
+    }
+    compositeFonts: "Adobe internal composite font plugin"
+    kinsokuShoriSettings: "Adobe Kinsoku Settings"
+    mojikumiSettings: "Adobe MojiKumi Settings"
+    fitHeadline: "fitHeadline"
+    createOutlines: "outline"
+    findFont: "Adobe Illustrator Find Font Menu Item"
+    changeCase: {
+      upperCase: "UpperCase Change Case Item"
+      lowerCase: "LowerCase Change Case Item"
+      titleCase: "Title Case Change Case Item"
+      sentenceCase: "Sentence case Change Case Item"
+    }
+    smartPunctuation: "Adobe Illustrator Smart Punctuation Menu Item"
+    opticalMarginAlignment: "Adobe Optical Alignment Item"
+    showHiddenCharacters: "showHiddenChar"
+    typeOrientation: {
+      horizontal: "type-horizontal"
+      vertical: "type-vertical"
+    }
+  }
+  let select: {
+    all: "selectall"
+    allOnActiveArtboard: "selectallinartboard"
+    deselect: "deselectall"
+    globalEdit: "SmartEdit Menu Item"
+    reselect: "Find Reselect menu item"
+    inverse: "Inverse menu item"
+    nextObjectAbove: "Selection Hat 8"
+    nextObjectBelow: "Selection Hat 9"
+    same: {
+      appearance: "Find Appearance menu item"
+      appearanceAttribute: "Find Appearance Attributes menu item"
+      blendingMode: "Find Blending Mode menu item"
+      fillAndStroke: "Find Fill & Stroke menu item"
+      fillColor: "Find Fill Color menu item"
+      opacity: "Find Opacity menu item"
+      strokeColor: "Find Stroke Color menu item"
+      strokeWeight: "Find Stroke Weight menu item"
+      graphicStyle: "Find Style menu item"
+      symbolInstance: "Find Symbol Instance menu item"
+      linkBlockSeries: "Find Link Block Series menu item"
+    }
+    object: {
+      allOnSameLayers: "Selection Hat 3"
+      directionHandles: "Selection Hat 1"
+      notAlignedToPixelGrid: "Selection Hat 12"
+      bristleBrushStrokes: "Bristle Brush Strokes menu item"
+      brushStrokes: "Brush Strokes menu item"
+      clippingMasks: "Clipping Masks menu item"
+      strayPoints: "Stray Points menu item"
+      textObjects: "Text Objects menu item"
+      flashDynamicText: "Dynamic Text"
+      flashInputText: "Input Text"
+    }
+    saveSelection: "Selection Hat 10"
+    editSelection: "Selection Hat 11"
+  }
+  let effect: {
+    applyLastEffect: "Adobe Apply Last Effect"
+    lastEffect: "Adobe Last Effect"
+    documentRasterEffectsSettings: "Live Rasterize Effect Setting"
+    live3D: {
+      extrudeAndBevel: "Live 3DExtrude"
+      revolve: "Live 3DRevolve"
+      rotate: "Live 3DRotate"
+    }
+    convertTo: {
+      rectangle: "Live Rectangle"
+      roundedRectangle: "Live Rounded Rectangle"
+      ellipse: "Live Ellipse"
+    }
+    cropMarks: "Live Trim Marks"
+    distortAndTransform: {
+      freeDistort: "Live Free Distort"
+      puckerAndBloat: "Live Pucker & Bloat"
+      roughen: "Live Roughen"
+      transform: "Live Transform"
+      tweak: "Live Scribble and Tweak"
+      twist: "Live Twist"
+      zigZag: "Live Zig Zag"
+    }
+    path: {
+      offsetPath: "Live Offset Path"
+      outlineObject: "Live Outline Object"
+      outlineStroke: "Live Outline Stroke"
+    }
+    pathfinder: {
+      add: "Live Pathfinder Add"
+      intersect: "Live Pathfinder Intersect"
+      exclude: "Live Pathfinder Exclude"
+      subtract: "Live Pathfinder Subtract"
+      minusBack: "Live Pathfinder Minus Back"
+      divide: "Live Pathfinder Divide"
+      trim: "Live Pathfinder Trim"
+      merge: "Live Pathfinder Merge"
+      crop: "Live Pathfinder Crop"
+      outline: "Live Pathfinder Outline"
+      hardMix: "Live Pathfinder Hard Mix"
+      softMix: "Live Pathfinder Soft Mix"
+      trap: "Live Pathfinder Trap"
+    }
+    rasterize: "Live Rasterize"
+    stylize: {
+      dropShadow: "Live Adobe Drop Shadow"
+      feather: "Live Feather"
+      innerGlow: "Live Inner Glow"
+      outerGlow: "Live Outer Glow"
+      roundCorners: "Live Adobe Round Corners"
+      scribble: "Live Scribble Fill"
+      glowingEdges: "Live PSAdapter_plugin_GlwE"
+    }
+    svgFilters: {
+      applySVGFilter: "Live SVG Filters"
+      importSVGFilter: "SVG Filter Import"
+    }
+    warp: {
+      arc: "Live Deform Arc"
+      arcLower: "Live Deform Arc Lower"
+      arcUpper: "Live Deform Arc Upper"
+      arch: "Live Deform Arch"
+      bulge: "Live Deform Bulge"
+      shellLower: "Live Deform Shell Lower"
+      shellUpper: "Live Deform Shell Upper"
+      flag: "Live Deform Flag"
+      wave: "Live Deform Wave"
+      fish: "Live Deform Fish"
+      rise: "Live Deform Rise"
+      fisheye: "Live Deform Fisheye"
+      inflate: "Live Deform Inflate"
+      squeeze: "Live Deform Squeeze"
+      twist: "Live Deform Twist"
+    }
+    effectGallery: "Live PSAdapter_plugin_GEfc"
+    artistic: {
+      coloredPencil: "Live PSAdapter_plugin_ClrP"
+      cutout: "Live PSAdapter_plugin_Ct"
+      dryBrush: "Live PSAdapter_plugin_DryB"
+      filmGrain: "Live PSAdapter_plugin_FlmG"
+      fresco: "Live PSAdapter_plugin_Frsc"
+      neonGlow: "Live PSAdapter_plugin_NGlw"
+      paintDaubs: "Live PSAdapter_plugin_PntD"
+      paletteKnife: "Live PSAdapter_plugin_PltK"
+      plasticWrap: "Live PSAdapter_plugin_PlsW"
+      posterEdges: "Live PSAdapter_plugin_PstE"
+      roughPastels: "Live PSAdapter_plugin_RghP"
+      smudgeStick: "Live PSAdapter_plugin_SmdS"
+      sponge: "Live PSAdapter_plugin_Spng"
+      underpainting: "Live PSAdapter_plugin_Undr"
+      watercolor: "Live PSAdapter_plugin_Wtrc"
+    }
+    blur: {
+      gaussianBlur: "Live PSAdapter_plugin_GblR"
+      radialBlur: "Live PSAdapter_plugin_RdlB"
+      smartBlur: "Live PSAdapter_plugin_SmrB"
+    }
+    brushStrokes: {
+      accentedEdges: "Live PSAdapter_plugin_AccE"
+      angledStrokes: "Live PSAdapter_plugin_AngS"
+      crosshatch: "Live PSAdapter_plugin_Crsh"
+      darkStrokes: "Live PSAdapter_plugin_DrkS"
+      inkOutlines: "Live PSAdapter_plugin_InkO"
+      spatter: "Live PSAdapter_plugin_Spt"
+      sprayedStrokes: "Live PSAdapter_plugin_SprS"
+      sumiE: "Live PSAdapter_plugin_Smie"
+    }
+    distort: {
+      diffuseGlow: "Live PSAdapter_plugin_DfsG"
+      glass: "Live PSAdapter_plugin_Gls"
+      oceanRipple: "Live PSAdapter_plugin_OcnR"
+    }
+    pixelate: {
+      colorHalftone: "Live PSAdapter_plugin_ClrH"
+      crystallize: "Live PSAdapter_plugin_Crst"
+      mezzotint: "Live PSAdapter_plugin_Mztn"
+      pointillize: "Live PSAdapter_plugin_Pntl"
+    }
+    sharpen: {
+      unsharpMask: "Live PSAdapter_plugin_USMk"
+    }
+    sketch: {
+      basRelief: "Live PSAdapter_plugin_BsRl"
+      chalkAndCharcoal: "Live PSAdapter_plugin_ChlC"
+      charcoal: "Live PSAdapter_plugin_Chrc"
+      chrome: "Live PSAdapter_plugin_Chrm"
+      contCrayon: "Live PSAdapter_plugin_CntC"
+      graphicPen: "Live PSAdapter_plugin_GraP"
+      halftonePattern: "Live PSAdapter_plugin_HlfS"
+      notePaper: "Live PSAdapter_plugin_NtPr"
+      photocopy: "Live PSAdapter_plugin_Phtc"
+      plaster: "Live PSAdapter_plugin_Plst"
+      reticulation: "Live PSAdapter_plugin_Rtcl"
+      stamp: "Live PSAdapter_plugin_Stmp"
+      tornEdges: "Live PSAdapter_plugin_TrnE"
+      waterPaper: "Live PSAdapter_plugin_WtrP"
+    }
+    texture: {
+      craquelure: "Live PSAdapter_plugin_Crql"
+      grain: "Live PSAdapter_plugin_Grn"
+      mosaicTiles: "Live PSAdapter_plugin_MscT"
+      patchwork: "Live PSAdapter_plugin_Ptch"
+      stainedGlass: "Live PSAdapter_plugin_StnG"
+      texturizer: "Live PSAdapter_plugin_Txtz"
+    }
+    video: {
+      deInterlace: "Live PSAdapter_plugin_Dntr"
+      nTSCColors: "Live PSAdapter_plugin_NTSC"
+    }
+  }
+  let view: {
+    preview: "preview"
+    overprintPreview: "ink"
+    pixelPreview: "raster"
+    proofSetup: {
+      cmyk: "proof-document"
+      macRgb: "proof-mac-rgb"
+      sRgb: "proof-win-rgb"
+      monitorRgb: "proof-monitor-rgb"
+      colorBlindnessPType: "proof-colorblindp"
+      colorBlindnessDType: "proof-colorblindd"
+      customize: "proof-custom"
+    }
+    proofColors: "proofColors"
+    zoomIn: "zoomin"
+    zoomOut: "zoomout"
+    fitArtboardInWindow: "fitin"
+    fitAllInWindow: "fitall"
+    actualSize: "actualsize"
+    hideEdges: "edge"
+    hideArtboards: "artboard"
+    hidePrintTiling: "pagetiling"
+    showSlices: "AISlice Feedback Menu"
+    lockSlices: "AISlice Lock Menu"
+    showTemplate: "showtemplate"
+    showGradientGuide: "Gradient Feedback"
+    rulers: {
+      showRulers: "ruler"
+      showVideoRulers: "videoruler"
+      changeToGlobalRulers: "rulerCoordinateSystem"
+    }
+    hideBoundingBox: "AI Bounding Box Toggle"
+    showTransparencyGrid: "TransparencyGrid Menu Item"
+    showTextThreads: "textthreads"
+    hideGradientAnnotator: "Gradient Feedback"
+    showLivePaintGaps: "Show Gaps Planet X"
+    guides: {
+      hideGuides: "showguide"
+      lockGuides: "lockguide"
+      makeGuides: "makeguide"
+      releaseGuides: "releaseguide"
+      clearGuides: "clearguide"
+    }
+    smartGuides: "Snapomatic on-off menu item"
+    perspectiveGrid: {
+      showGrid: "Show Perspective Grid"
+      showRulers: "Show Ruler"
+      snapToGrid: "Snap to Grid"
+      lockGrid: "Lock Perspective Grid"
+      lockStationPoint: "Lock Station Point"
+      defineGrid: "Define Perspective Grid"
+      saveGridAsPreset: "Save Perspective Grid as Preset"
+    }
+    showGrid: "showgrid"
+    snapToGrid: "snapgrid"
+    snapToPoint: "snappoint"
+    newView: "newview"
+    editViews: "editview"
+  }
+  let window: {
+    newWindow: "newwindow"
+    arrange: {
+      cascade: "cascade"
+      tile: "tile"
+      floatInWindow: "floatInWindow"
+      floatAllInWindows: "floatAllInWindows"
+      consolidateAllWindows: "consolidateAllWindows"
+    }
+    workspace: {
+      saveWorkspace: "Adobe Save Workspace"
+      newWorkspace: "Adobe New Workspace"
+      manageWorkspaces: "Adobe Manage Workspace"
+    }
+    cssMenu: "CSS Menu Item"
+    tools: "AdobeBuiltInToolbox1"
+    actions: "Adobe Action Palette"
+    align: "AdobeAlignObjects2"
+    appearance: "Style Palette"
+    artboards: "Adobe Artboard Palette"
+    attributes: "internal palettes posing as plug-in menus-attributes"
+    brushes: "Adobe BrushManager Menu Item"
+    color: "Adobe Color Palette"
+    colorGuide: "Adobe Harmony Palette"
+    kulerPanel: "Adobe Illustrator Kuler Panel"
+    documentInfo: "DocInfo1"
+    flattenerPreview: "Adobe Flattening Preview"
+    gradient: "Adobe Gradient Palette"
+    graphicStyles: "Adobe Style Palette"
+    info: "internal palettes posing as plug-in menus-info"
+    layers: "AdobeLayerPalette1"
+    links: "Adobe LinkPalette Menu Item"
+    magicWand: "AI Magic Wand"
+    navigator: "AdobeNavigator"
+    pathfinder: "Adobe PathfinderUI"
+    separationsPreview: "Adobe Separation Preview Panel"
+    stroke: "Adobe Stroke Palette"
+    svgInteractivity: "Adobe SVG Interactivity Palette"
+    swatches: "Adobe Swatches Menu Item"
+    symbols: "Adobe Symbol Palette"
+    transform: "AdobeTransformObjects1"
+    transparency: "Adobe Transparency Palette Menu Item"
+    variables: "Adobe Variables Palette Menu Item"
+    character: "internal palettes posing as plug-in menus-character"
+    characterStyles: "Character Styles"
+    glyphs: "alternate glyph palette plugin 2"
+    openType: "internal palettes posing as plug-in menus-opentype"
+    paragraph: "internal palettes posing as plug-in menus-paragraph"
+    paragraphStyles: "Adobe Paragraph Styles Palette"
+    tabs: "internal palettes posing as plug-in menus-tab"
+    otherArtStyleLibrary: "Adobe Art Style Plugin Other libraries menu item"
+    otherSymbolLibrary: "Adobe Symbol Palette Plugin Other libraries menu item"
+  }
+  let help: {
+    illustratorHelp: "helpcontent"
+    aboutIllustrator: "about"
+    systemInfo: "System Info"
+  }
+  let panels: {
+    newSymbol: "Adobe New Symbol Shortcut"
+    showColorPanel_Secondary: "Adobe Color Palette Secondary"
+    actionsBatch: "Adobe Actions Batch"
+    addNewFill: "Adobe New Fill Shortcut"
+    addNewStroke: "Adobe New Stroke Shortcut"
+    newGraphicStyle: "Adobe New Style Shortcut"
+    newLayer: "AdobeLayerPalette2"
+    newLayerWithDialog: "AdobeLayerPalette3"
+    updateLink: "Adobe Update Link Shortcut"
+    navigatorOptions: "AdobeNavigator2"
+    newSwatch: "Adobe New Swatch Shortcut Menu"
+  }
+}
