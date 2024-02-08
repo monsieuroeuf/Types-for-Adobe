@@ -5829,52 +5829,52 @@ declare class ExportOptionsJPEG {
   /**
    * Should the resulting image be antialiased.
    */
-  static antiAliasing: boolean
+  antiAliasing: boolean
 
   /**
    * Should the resulting image be clipped to the artboard.
    */
-  static artBoardClipping: boolean
+  artBoardClipping: boolean
 
   /**
    * Blur the resulting image this much.
    */
-  static blurAmount: number
+  blurAmount: number
 
   /**
    * Horizontal scaling factor.
    */
-  static horizontalScale: number
+  horizontalScale: number
 
   /**
    * Should the artboard be matted with a color.
    */
-  static matte: boolean
+  matte: boolean
 
   /**
    * The color to use when matting the artboard (default: white)
    */
-  static matteColor: RGBColor
+  matteColor: RGBColor
 
   /**
    * Should the image be optimized for web viewing.
    */
-  static optimization: boolean
+  optimization: boolean
 
   /**
    * Quality of resulting image.
    */
-  static qualitySetting: number
+  qualitySetting: number
 
   /**
    * Should the resulting image be saved as HTML.
    */
-  static saveAsHTML: boolean
+  saveAsHTML: boolean
 
   /**
    * Vertical scaling factor.
    */
-  static verticalScale: number
+  verticalScale: number
 }
 
 /**
@@ -8598,7 +8598,7 @@ declare class Document {
   /**
    * The selection within the document.
    */
-  selection: any
+  selection: PageItem[] | InsertionPoint | null
 
   /**
    *
