@@ -334,10 +334,10 @@ declare enum AutoOrientType {
   NO_AUTO_ORIENT = 4212,
 }
 
-declare enum AutoKernTypeValue {
+declare enum AutoKernType {
   NO_AUTO_KERN = 11412,
-  METRICS = 11413,
-  OPTICAL = 11414,
+  METRIC_KERN = 11413,
+  OPTICAL_KERN = 11414,
 }
 
 declare enum BlendingMode {
@@ -2596,7 +2596,7 @@ declare class TextDocument {
   text: string
 
   /** The text layer's automatic kerning type: "none", "metrics", "optical" */
-  autoKernType: AutoKernTypeValue
+  autoKernType: AutoKernType
 
   /** When true, the text layer shows a fill. */
   applyFill: boolean
