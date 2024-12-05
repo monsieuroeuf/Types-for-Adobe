@@ -5703,62 +5703,62 @@ declare class EPSSaveOptions {
   /**
    * If SaveMultipleArtboards is true,this will be considered for multi-asset extraction which specifies artboard range.Empty string will extracts all the artboards.Default is empty string.
    */
-  static artboardRange: string
+  artboardRange: string
 
   /**
    * Use CMYK PostScript.
    */
-  static cmykPostScript: boolean
+  cmykPostScript: boolean
 
   /**
    * What Illustrator file format version to create.
    */
-  static compatibility: Compatibility
+  compatibility: Compatibility
 
   /**
    * Create a raster item of the gradient or gradient mesh so that PostScript Level 2 printers can print the object.
    */
-  static compatibleGradientPrinting: boolean
+  compatibleGradientPrinting: boolean
 
   /**
    * Embed all fonts used by the document in the saved file (version 7 or later)
    */
-  static embedAllFonts: boolean
+  embedAllFonts: boolean
 
   /**
    * Are linked image files to be included in the saved document.
    */
-  static embedLinkedFiles: boolean
+  embedLinkedFiles: boolean
 
   /**
    * How should transparency be flattened for older file format versions (pre-version 9)
    */
-  static flattenOutput: OutputFlattening
+  flattenOutput: OutputFlattening
 
   /**
    * Include thumbnail image of the EPS artwork.
    */
-  static includeDocumentThumbnails: boolean
+  includeDocumentThumbnails: boolean
 
   /**
    *
    */
-  static overprint: PDFOverprint
+  overprint: PDFOverprint
 
   /**
    * PostScript level to use (level 1 valid for file format version 8 or older)
    */
-  static postScript: EPSPostScriptLevelEnum
+  postScript: EPSPostScriptLevelEnum
 
   /**
    * EPS preview format.
    */
-  static preview: EPSPreview
+  preview: EPSPreview
 
   /**
    * All the artboards or range of the artboards will be saved.
    */
-  static saveMultipleArtboards: boolean
+  saveMultipleArtboards: boolean
 }
 
 /**
@@ -5768,282 +5768,282 @@ declare class PDFSaveOptions {
   /**
    * Create acrobat layers from top-level layers - acrobat 6 only option.
    */
-  static acrobatLayers: boolean
+  acrobatLayers: boolean
 
   /**
    * Considered for multi-asset extraction which specifies artboard range.Empty string will extracts all the artboards.Default is empty string.
    */
-  static artboardRange: string
+  artboardRange: string
 
   /**
    * Link 4 bleed values.
    */
-  static bleedLink: boolean
+  bleedLink: boolean
 
   /**
    * The bleed offset rect.
    */
-  static bleedOffsetRect: Rect
+  bleedOffsetRect: Rect
 
   /**
    * Draw color bars.
    */
-  static colorBars: boolean
+  colorBars: boolean
 
   /**
    * How should color bitmap images be compressed.
    */
-  static colorCompression: CompressionQuality
+  colorCompression: CompressionQuality
 
   /**
    * PDF color conversion policy. Three choices are available: (1)No Color Conversion (2) Repurpose (3) Convert to Destination.
    */
-  static colorConversionID: ColorConversion
+  colorConversionID: ColorConversion
 
   /**
    * When NoColorConversion is specified for Color Conversion, NoColorDestination is set.
    */
-  static colorDestinationID: ColorDestination
+  colorDestinationID: ColorDestination
 
   /**
    * If zero, no downsampling, otherwise, the resolution to downsample color bitmap images to.
    */
-  static colorDownsampling: number
+  colorDownsampling: number
 
   /**
    * Downsample if the image's resolution is above this value.
    */
-  static colorDownsamplingImageThreshold: number
+  colorDownsamplingImageThreshold: number
 
   /**
    * How should color bitmap images be resampled.
    */
-  static colorDownsamplingMethod: DownsampleMethod
+  colorDownsamplingMethod: DownsampleMethod
 
   /**
    * If CMS is off, Don't Include Profiles is set.
    */
-  static colorProfileID: ColorProfile
+  colorProfileID: ColorProfile
 
   /**
    * Tile size when compressing with JPEG2000.
    */
-  static colorTileSize: number
+  colorTileSize: number
 
   /**
    * The version of the Acrobat file format to create.
    */
-  static compatibility: PDFCompatibility
+  compatibility: PDFCompatibility
 
   /**
    * Should line art and text be compressed?
    */
-  static compressArt: boolean
+  compressArt: boolean
 
   /**
    * A password string to open the document.
    */
-  static documentPassword: string
+  documentPassword: string
 
   /**
    * Enable accessing 128-bit.
    */
-  static enableAccess: boolean
+  enableAccess: boolean
 
   /**
    * Enable copying of text 128-bit.
    */
-  static enableCopy: boolean
+  enableCopy: boolean
 
   /**
    * Enable copying and accessing 40-bit.
    */
-  static enableCopyAccess: boolean
+  enableCopyAccess: boolean
 
   /**
    * Enable plaintext metadata 128-bit - available only for acrobat 6.
    */
-  static enablePlainText: boolean
+  enablePlainText: boolean
 
   /**
    * The printing flattener options.
    */
-  static flattenerOptions: PrintFlattenerOptions
+  flattenerOptions: PrintFlattenerOptions
 
   /**
    * The transparency flattener preset name.
    */
-  static flattenerPreset: string
+  flattenerPreset: string
 
   /**
    * Include a subset of fonts when less than this percentage of characters are used.
    */
-  static fontSubsetThreshold: number
+  fontSubsetThreshold: number
 
   /**
    * Generate thumbnails for the saved document.
    */
-  static generateThumbnails: boolean
+  generateThumbnails: boolean
 
   /**
    * How should grayscale bitmap images be compressed.
    */
-  static grayscaleCompression: CompressionQuality
+  grayscaleCompression: CompressionQuality
 
   /**
    * If zero, no downsampling, otherwise, the resolution to downsample grayscale images to.
    */
-  static grayscaleDownsampling: number
+  grayscaleDownsampling: number
 
   /**
    * Downsample if the image's resolution is above this value.
    */
-  static grayscaleDownsamplingImageThreshold: number
+  grayscaleDownsamplingImageThreshold: number
 
   /**
    * How should grayscale bitmap images be resampled.
    */
-  static grayscaleDownsamplingMethod: DownsampleMethod
+  grayscaleDownsamplingMethod: DownsampleMethod
 
   /**
    * Tile size when compressing with JPEG2000.
    */
-  static grayscaleTileSize: number
+  grayscaleTileSize: number
 
   /**
    * How should monochrome bitmap images be compressed.
    */
-  static monochromeCompression: MonochromeCompression
+  monochromeCompression: MonochromeCompression
 
   /**
    * If zero, no downsampling, otherwise, the resolution to downsample images to.
    */
-  static monochromeDownsampling: number
+  monochromeDownsampling: number
 
   /**
    * Downsample if the image's resolution is above this value.
    */
-  static monochromeDownsamplingImageThreshold: number
+  monochromeDownsamplingImageThreshold: number
 
   /**
    * How should monochrome bitmap images be resampled.
    */
-  static monochromeDownsamplingMethod: DownsampleMethod
+  monochromeDownsamplingMethod: DownsampleMethod
 
   /**
    * Custom offset (in points) for using the custom paper.
    */
-  static offset: number
+  offset: number
 
   /**
    * Should the PDF document be optimized for fast web viewing.
    */
-  static optimization: boolean
+  optimization: boolean
 
   /**
    * This is an optional comment which, if present, is added to the PDF file and describes the intended printing condition.
    */
-  static outputCondition: string
+  outputCondition: string
 
   /**
    * If selected for Output Intent Profile Name, you can set the name of a registered printing condition.
    */
-  static outputConditionID: string
+  outputConditionID: string
 
   /**
    * When CMS is on, the output intent profile is the same profile selected for Destination in the Color group box.
    */
-  static outputIntentProfile: string
+  outputIntentProfile: string
 
   /**
    * PDF security printing permission.
    */
-  static pDFAllowPrinting: PDFPrintAllowedEnum
+  pDFAllowPrinting: PDFPrintAllowedEnum
 
   /**
    * PDF security changes allowed.
    */
-  static pDFChangesAllowed: PDFChangesAllowedEnum
+  pDFChangesAllowed: PDFChangesAllowedEnum
 
   /**
    * The max string length is 255 bytes. Name of PDF preset to use.
    */
-  static pDFPreset: string
+  pDFPreset: string
 
   /**
    * This control includes the None option for when the user is not complying with any PDF standard.
    */
-  static pDFXStandard: PDFXStandard
+  pDFXStandard: PDFXStandard
 
   /**
    * This displays the description from the selected preset.
    */
-  static pDFXStandardDescription: string
+  pDFXStandardDescription: string
 
   /**
    * Draw page information.
    */
-  static pageInformation: boolean
+  pageInformation: boolean
 
   /**
    * The page marks style.
    */
-  static pageMarksType: PageMarksTypes
+  pageMarksType: PageMarksTypes
 
   /**
    * A password string to restrict editing security settings.
    */
-  static permissionPassword: string
+  permissionPassword: string
 
   /**
    * Preserve Illustrator editing capabilities when saving the document.
    */
-  static preserveEditability: boolean
+  preserveEditability: boolean
 
   /**
    * Flattening printer resolution.
    */
-  static printerResolution: number
+  printerResolution: number
 
   /**
    * Draw registration marks.
    */
-  static registrationMarks: boolean
+  registrationMarks: boolean
 
   /**
    * URL to the site where the specified output condition is registered. No validation is performed on the URL.
    */
-  static registryName: string
+  registryName: string
 
   /**
    * Require a password to open the document.
    */
-  static requireDocumentPassword: boolean
+  requireDocumentPassword: boolean
 
   /**
    * Use a password to restrict editing security settings.
    */
-  static requirePermissionPassword: boolean
+  requirePermissionPassword: boolean
 
   /**
    * This indicates if manual trapping has been prepared in the document.
    */
-  static trapped: boolean
+  trapped: boolean
 
   /**
    * Trim mark weight.
    */
-  static trimMarkWeight: PDFTrimMarkWeight
+  trimMarkWeight: PDFTrimMarkWeight
 
   /**
    * Draw trim marks.
    */
-  static trimMarks: boolean
+  trimMarks: boolean
 
   /**
    * View PDF after saving.
    */
-  static viewAfterSaving: boolean
+  viewAfterSaving: boolean
 }
 
 /**
@@ -6053,47 +6053,47 @@ declare class IllustratorSaveOptions {
   /**
    * If SaveMultipleArtboards is true ,this will be considered for multi-asset extraction which specifies artboard range.Empty string will extracts all the artboards.Default is empty string.
    */
-  static artboardRange: string
+  artboardRange: string
 
   /**
    * What Illustrator file format version to create.
    */
-  static compatibility: Compatibility
+  compatibility: Compatibility
 
   /**
    * Should the saved file be compressed (version 10 or later)
    */
-  static compressed: boolean
+  compressed: boolean
 
   /**
    * Embed the document's ICC profile in the saved file (version 9 or later)
    */
-  static embedICCProfile: boolean
+  embedICCProfile: boolean
 
   /**
    * Are linked image files to be included in the saved document (versions 7 or later)
    */
-  static embedLinkedFiles: boolean
+  embedLinkedFiles: boolean
 
   /**
    * How should transparency be flattened for older file format versions (pre-version 9)
    */
-  static flattenOutput: OutputFlattening
+  flattenOutput: OutputFlattening
 
   /**
    * Include a subset of fonts when less than this percentage of characters are used (version 9 or later)
    */
-  static fontSubsetThreshold: number
+  fontSubsetThreshold: number
 
   /**
    * Save as a PDF compatible file (version 10 or later)
    */
-  static pdfCompatible: boolean
+  pdfCompatible: boolean
 
   /**
    * All the artboards or range of the artboards will be saved.
    */
-  static saveMultipleArtboards: boolean
+  saveMultipleArtboards: boolean
 }
 
 /**
