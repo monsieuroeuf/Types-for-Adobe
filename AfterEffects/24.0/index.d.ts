@@ -1350,6 +1350,11 @@ declare class ImportOptions {
   canImportAs(type: ImportAsType): boolean
 }
 
+declare class Guide {
+  orientationType: 0|1
+  position: number
+}
+
 /** The Item object represents an item that can appear in the Project panel. */
 declare class Item {
   /** A unique identifier for this item. */
@@ -1357,6 +1362,8 @@ declare class Item {
 
   /** The type of item. */
   readonly typeName: string
+
+  readonly guides: Guide[]
 
   /** The name of the object as shown in the Project panel. */
   name: string
