@@ -1677,6 +1677,9 @@ declare class Item {
   /** The type of item. */
   readonly typeName: string
 
+  /** An array of guide objects. */
+  readonly guides: Guide[]
+
   /** The name of the object as shown in the Project panel. */
   name: string
 
@@ -1704,6 +1707,12 @@ declare class Item {
   /** Deletes the item from the project. */
   remove(): void
 }
+
+declare class Guide {
+  orientationType: 0 | 1
+  position: number
+}
+
 
 /** The ItemCollection object represents a collection of items. The ItemCollection belonging to a Project object contains all the Item objects for items in the project. The ItemCollection belonging to a FolderItem object contains all the Item objects for items in that folder. */
 declare class ItemCollection extends Collection {
