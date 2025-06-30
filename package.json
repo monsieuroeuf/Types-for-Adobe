@@ -1,6 +1,6 @@
 {
   "name": "types-for-adobe",
-  "version": "7.2.4",
+  "version": "7.2.5",
   "files": [
     "AfterEffects",
     "Animate",
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/aenhancers/types-for-adobe.git"
+    "url": "https://github.com/docsforadobe/types-for-adobe.git"
   },
   "scripts": {
     "test": "_bin/test.sh"

@@ -213,9 +213,9 @@ declare class Sequence {
 
   /**
    * Clones a sequence.
-   * @returns the clone Sequence.
+   * @returns a boolean indicating whether the cloning was successful.
    */
-  clone(): Sequence
+  clone(): boolean
 
   /**
    * Creates a caption track in the active sequence using caption data from a project item.
@@ -826,6 +826,11 @@ declare class SourceMonitor {
    *
    */
   openProjectItem(itemToOpen: ProjectItem): void
+
+  /**
+   *
+   */
+  getProjectItem(): ProjectItem
 }
 
 /**

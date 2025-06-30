@@ -1070,6 +1070,10 @@ declare class Application {
   cancelTimeout(id: number): void
 }
 
+declare class ParagraphRange extends Range {
+  characterRange(): CharacterRange
+}
+
 declare class Preferences {
   deletePref(section: string, key: string, type?: PREFType): void
   getPrefAsBool(section: string, key: string, type?: PREFType): boolean
@@ -1316,6 +1320,18 @@ declare class Range {
   toString(): string
 }
 
+declare class CharacterRange extends Range {
+  fillColor: [number, number, number]
+  kerning: AutoKernType
+  strokeColor: [number, number, number]
+  strokeOverFill: boolean
+  text: string
+
+  pasteFrom(characterRange: CharacterRange): void
+}
+
+declare class ComposedLineRange extends CharacterRange {}
+
 /** Like an array, a collection associates a set of objects or values as a logical group and provides access to them by index. However, most collection objects are read-only. You do not assign objects to them yourself—their contents update automatically as objects are created or deleted. */
 declare class Collection {
   /** The number of objects in the collection. */
@@ -1474,6 +1490,9 @@ declare class FontObject {
   /** The family prefix of the font. */
   readonly familyPrefix: string
 
+  /** The unique identifier for the font. */
+  readonly fontID: number
+
   /** The full name of the font. */
   readonly fullName: string
 
@@ -1528,9 +1547,11 @@ declare class FontObject {
 
 declare class FontsObject {
   readonly allFonts: FontObject[][]
+  readonly fontServerRevision: number
   readonly fontsWithDefaultDesignAxes: FontObject[]
   readonly missingOrSubstitutedFonts: FontObject[]
 
+  getFontByID(id: string): FontObject | undefined
   getFontsByFamilyNameAndStyleName(familyName: string, styleName: string): FontObject[] | undefined
   getFontsByPostScriptName(postscriptName: string): FontObject[] | undefined
 }
@@ -1844,6 +1865,12 @@ declare class LayerCollection extends Collection {
     pixelAspect: number,
     duration?: number,
   ): AVLayer
+
+  /** Create a vertical text box */
+  addVerticalBoxText(width?: number, height?: number): TextLayer
+
+  /** Create vertical text layer */
+  addVerticalText(sourceText?: string): TextLayer
 
   /** Creates a new paragraph (box) text layer and adds it to this collection. */
   addBoxText(size: [number, number], sourceText?: string | TextDocument): TextLayer
@@ -2838,6 +2865,12 @@ declare class TextDocument {
   /** When true, the text layer is paragraph (bounded) text. */
   readonly boxText: boolean
 
+  /** Number of lines in a text layer */
+  readonly composedLineCount: number
+
+  /** Returns the number of paragraphs in a text layer */
+  readonly paragraphCount: number
+
   /** Path of font file, providing its location on disk (not guaranteed to be returned for all font types; return value may be empty string for some kinds of fonts) */
   readonly fontLocation: string
 
@@ -2961,6 +2994,9 @@ declare class TextDocument {
   /** The text layer’s line join type. */
   lineJoinType: LineJoinType
 
+  /** The text layer’s line orientation. */
+  lineOrientation: LineOrientation
+
   /** When true, no break is on for text boxes */
   noBreak: boolean
 
@@ -2987,6 +3023,23 @@ declare class TextDocument {
 
   /** For box text, the pixel dimensions for the text bounds. */
   boxTextSize: [number, number]
+
+  /** A character ranged version of Text Document Object. */
+  characterRange(characterStart: number, characterEnd: number): TextDocument & CharacterRange
+
+  /** A line ranged version of Text Document Object. */
+  composedLineCharacterIndexesAt(characterIndex: number): TextDocument & ComposedLineRange
+
+  /** A line ranged version of Text Document Object. */
+  composedLineRange(lineStart: number, lineEnd: number): TextDocument & ComposedLineRange
+
+  /** Returns the character indexes of the paragraph that contains the specified character index. */
+  paragraphCharacterIndexesAt(characterIndex: number): { start: number; end: number }
+
+  paragraphRange(
+    paragraphIndexStart: number,
+    paragraphIndexEnd?: number,
+  ): TextDocument & ParagraphRange
 
   /** Restores the default character settings in the Character panel. */
   resetCharStyle(): void
